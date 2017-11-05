@@ -1,11 +1,20 @@
-var request = require('request');
+var rp = require('request-promise');
+var runFile = require('./runProject');
 
-request({
-  uri: 'https://www.parsehub.com/api/v2/runs/tDTATbEiAWD0',
+var runInfo = runFile.runObject;
+var runToken = runInfo.run_token;
+
+var getRun = {
+  uri: 'https://www.parsehub.com/api/v2/runs/' + runToken,
   method: 'GET',
   qs: {
     api_key: "tBBVHwdbsEeo"
   }
-}, function(err, resp, body) {
+};
+rp(getRun)
+.then(function(body){
   console.log(body);
+})
+.catch(function(err) {
+  console.log("Did not work");
 });

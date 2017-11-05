@@ -17,7 +17,7 @@ request({
   var cleanedArray = _.map(jsonInfo.spots, function(spot) {
     var cleanedSpot = spot;
   
-    cleanedSpot.name = _.replace(spot.name, '\n', ' ');
+    cleanedSpot.name = _.replace(spot.name, '\n', ', ');
 
     return cleanedSpot;
   });
@@ -34,5 +34,5 @@ request({
 });
 
 
-//exports.jsonInfo = jsonInfo;
+exports.jsonInfo = jsonInfo;
 
